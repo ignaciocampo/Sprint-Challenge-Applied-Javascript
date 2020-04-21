@@ -18,7 +18,38 @@
 // </div>
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
-const cardContainerConst = document.querySelector('cards-container')
+
+
+
+
+axios.get("https://lambda-times-backend.herokuapp.com/articles")
+.then((response) => {
+    let articles = response.data.articles
+
+
+    
+    let orderData = []
+    
+    for (const arrays in articles){
+      //  orderData.push(articles[arrays.]) 
+      
+ }
+
+ orderData.forEach((everyArray) =>{
+        everyArray.forEach((everyObject) =>{
+          cardCreator(everyObject.headline, everyObject.authorPhoto, everyObject.authorName)
+      })
+   })
+
+   
+ })
+   
+.catch( (err) => {
+  console.log(err)
+})
+
+
+let cardContainerConst = document.querySelector('.cards-container')
 
 function cardCreator(ArtHeadline, ArtSrc, ArtAuthor){
 
@@ -27,7 +58,7 @@ cardConst.classList.add('card');
 
 const headlineConst = document.createElement('div');
 headlineConst.classList.add('headline')
-headlineConst.textContent = `${ArtHeadline}`
+headlineConst.textContent = ArtHeadline
 
 const authorConst = document.createElement('div')
 authorConst.classList.add('author');
@@ -36,10 +67,10 @@ const imgConst = document.createElement('div')
 imgConst.classList.add('img-container');
 
 const imgSrcConst = document.createElement('img');
-imgSrcConst.src = `${ArtSrc}`
+imgSrcConst.src = ArtSrc
 
 const spanConst = document.createElement('span')
-spanConst.textContent = `${ArtAuthor}`
+spanConst.textContent = ArtAuthor
 
 cardContainerConst.appendChild(cardConst)
 
@@ -55,17 +86,8 @@ return cardConst
 }
 
 
-axios.get("https://lambda-times-backend.herokuapp.com/articles")
-.then( (response) => {
-    let articles = response.data.articles
-    for (const name in articles)
-    console.log(articles[name])
- 
-  console.log(response)
-})
-.catch( (err) => {
-  console.log("the data was not returned", err)
-})
+
+
 
 //for(response.data.articles(ArtHeadline, ArtSrc, ArtAuthor)){
     // const newArticle = cardCreator(ArtHeadline, ArtSrc, ArtAuthor)
@@ -78,9 +100,6 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
 
     // for (const whateverName in object) {
     //  console.log(object[whateverName])
-         for (i = 0; i < javascript.length; i++){
-             console.log(response.data.articles[javascript])
-         }
-
+      
          
  

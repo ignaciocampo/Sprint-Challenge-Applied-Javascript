@@ -32,3 +32,7 @@ console.log(response)
 
 //for(response.data.articles()){
        
+ // articles[ss].array.forEach(ArtHeadline, ArtSrc, ArtAuthor => {
+    //     const newArticle = cardCreator(ArtHeadline, ArtSrc, ArtAuthor)
+    //     cardContainerConst.appendChild(newArticle)
+    // });
